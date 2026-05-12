@@ -1,5 +1,8 @@
-#!/bin/bash
+# Add the unauthorized policy to the target role
 aws iam put-role-policy \
   --role-name lab-target-role \
   --policy-name unauthorized-policy \
   --policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":"s3:*","Resource":"*"}]}'
+
+# Verify that the unauthorized policy has been removed from the target role
+aws iam list-role-policies --role-name lab-target-role
